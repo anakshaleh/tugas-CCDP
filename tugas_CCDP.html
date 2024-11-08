@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Code JavaDocs</title>
+    <style>
+        .code-box {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 70%;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            font-family: monospace;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="code-box">
+        <pre>
+<code>
+import java.util.ArrayList;
+import java.util.List;
+
+public class IntegerGenerator {
+
+    /**
+     * Menghasilkan daftar bilangan bulat dari nilai awal hingga nilai akhir (inklusif).
+     *
+     * @param start Nilai awal bilangan bulat, biasanya diatur ke 1.
+     * @param end   Nilai akhir bilangan bulat, biasanya diatur ke 100.
+     * @return List yang berisi bilangan bulat dari start hingga end (inklusif).
+     * @throws IllegalArgumentException jika start lebih besar dari end,
+     * atau jika start atau end berada di luar rentang 1 hingga 100.
+     */
+     // Validasi input: Pastikan start <= end dan keduanya dalam rentang 1-100
+    public static List<Integer> generateIntegers(int start, int end) {
+        if (start > end || start < 1 || end > 100) {
+            throw new IllegalArgumentException("Nilai start harus <= end dan keduanya dalam rentang 1 hingga 100.");
+        }
+
+        // Inisialisasi daftar untuk menyimpan bilangan bulat
+        List<Integer> integers = new ArrayList<>();
+
+        // Loop dari start ke end untuk menambahkan bilangan bulat ke daftar
+        for (int i = start; i <= end; i++) {
+            integers.add(i);
+        }
+
+        return integers;
+    }
+
+    /**
+     * Metode utama untuk menguji fungsi generateIntegers.
+     *
+     * @param args Argumen baris perintah (tidak digunakan).
+     */
+    public static void main(String[] args) {
+        try {
+            // Menghasilkan dan menampilkan daftar bilangan bulat dari 1 hingga 100
+            List<Integer> integers = generateIntegers(1, 100);
+            System.out.println("Bilangan bulat dari 1 hingga 100: " + integers);
+        } catch (IllegalArgumentException e) {
+            System.err.println("Kesalahan: " + e.getMessage());
+        }
+    }
+}
+</code>
+        </pre>
+    </div>
+</body>
+</html>
